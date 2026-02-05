@@ -92,6 +92,10 @@ header {
     position: sticky;
     top: 0;
     z-index: 1000;
+    /* Mejora para sticky más robusto */
+    width: 100%;
+    left: 0;
+    right: 0;
 }
 
 .header-container {
@@ -106,6 +110,11 @@ header {
 .logo {
     display: flex;
     align-items: center;
+}
+
+.logo img {
+    height: 45px;
+    width: auto;
 }
 
 .logo-text {
@@ -154,12 +163,13 @@ nav a:hover {
     display: flex;
     align-items: center;
     gap: 8px;
-    transition: background var(--transition);
+    transition: all var(--transition);
     position: relative;
 }
 
 .cart-btn:hover {
     background: var(--amarillo);
+    color: var(--negro); /* FIX: Texto negro para mejor contraste sobre amarillo */
 }
 
 .cart-count {
