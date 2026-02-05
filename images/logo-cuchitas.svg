@@ -1,30 +1,27 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 60" width="220" height="60">
   <!-- Texto Cuchitas -->
   <text x="10" y="38" font-family="'Playfair Display', Georgia, serif" font-size="36" font-weight="700" fill="white">Cuchitas</text>
-  
-  <!-- Mazorca de maíz -->
+
+  <!-- Mazorca de maíz pequeña -->
   <g transform="translate(175, 12)">
-    <!-- Cuerpo de la mazorca -->
-    <ellipse cx="12" cy="18" rx="8" ry="14" fill="#F5C518"/>
+    <!-- Granos de maíz -->
+    <ellipse cx="10" cy="10" rx="8" ry="14" fill="#F5C518"/>
+    <ellipse cx="7" cy="8" rx="3" ry="4" fill="#FFD54F"/>
+    <ellipse cx="13" cy="8" rx="3" ry="4" fill="#FFD54F"/>
+    <ellipse cx="7" cy="15" rx="3" ry="4" fill="#FFD54F"/>
+    <ellipse cx="13" cy="15" rx="3" ry="4" fill="#FFD54F"/>
+    <ellipse cx="10" cy="12" rx="2" ry="3" fill="#FFC107"/>
     <!-- Hojas -->
-    <path d="M4,28 Q0,20 6,10 Q8,18 4,28" fill="#9ACD32"/>
-    <path d="M20,28 Q24,20 18,10 Q16,18 20,28" fill="#9ACD32"/>
-    <!-- Granos -->
-    <circle cx="9" cy="12" r="2" fill="#DAA520"/>
-    <circle cx="15" cy="12" r="2" fill="#DAA520"/>
-    <circle cx="9" cy="18" r="2" fill="#DAA520"/>
-    <circle cx="15" cy="18" r="2" fill="#DAA520"/>
-    <circle cx="12" cy="15" r="2" fill="#DAA520"/>
-    <circle cx="9" cy="24" r="2" fill="#DAA520"/>
-    <circle cx="15" cy="24" r="2" fill="#DAA520"/>
+    <path d="M2 20 Q-3 10 5 5" stroke="#9ACD32" stroke-width="2" fill="none"/>
+    <path d="M18 20 Q23 10 15 5" stroke="#9ACD32" stroke-width="2" fill="none"/>
   </g>
-  
-  <!-- Línea de pincelada verde/amarillo -->
+
+  <!-- Línea decorativa degradado -->
   <defs>
-    <linearGradient id="brushGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+    <linearGradient id="lineGrad" x1="0%" y1="0%" x2="100%" y2="0%">
       <stop offset="0%" style="stop-color:#9ACD32"/>
       <stop offset="100%" style="stop-color:#F5C518"/>
     </linearGradient>
   </defs>
-  <path d="M10,48 Q60,52 110,46 Q160,50 200,48" stroke="url(#brushGrad)" stroke-width="5" fill="none" stroke-linecap="round"/>
+  <rect x="10" y="44" width="160" height="4" rx="2" fill="url(#lineGrad)"/>
 </svg>
