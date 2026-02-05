@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 80">
+  <!-- Texto "Cuchitas" -->
+  <text x="10" y="50" font-family="Georgia, serif" font-size="42" font-weight="bold" fill="#ffffff">
+    Cuchitas
+  </text>
+  <!-- Chile emoji como ícono -->
+  <text x="220" y="48" font-size="36">🌶️</text>
+  <!-- Línea decorativa verde/amarillo -->
+  <defs>
+    <linearGradient id="lineGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#9ACD32"/>
+      <stop offset="100%" style="stop-color:#F5C518"/>
+    </linearGradient>
+  </defs>
+  <rect x="10" y="58" width="200" height="6" rx="3" fill="url(#lineGrad)"/>
+</svg>
