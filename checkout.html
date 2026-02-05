@@ -17,10 +17,7 @@
     <header>
         <div class="header-container">
             <a href="/" class="logo">
-                <div>
-                    <span class="logo-text">Cuchitas<span class="logo-chile">🌶️</span></span>
-                    <span class="logo-underline"></span>
-                </div>
+                <img src="images/logo-cuchitas.svg" alt="Cuchitas" width="180" height="45">
             </a>
             <div style="color: white; display: flex; align-items: center; gap: 10px;">
                 <span>🔒</span>
@@ -37,7 +34,7 @@
 
         <h1 style="margin-bottom: 30px;">Finalizar Pedido</h1>
 
-        <div class="checkout-grid">
+        <div style="display: grid; grid-template-columns: 1fr 400px; gap: 40px;">
             <!-- Formulario -->
             <div class="checkout-form">
                 <h2 style="margin-bottom: 25px; font-size: 20px;">Datos de Envío</h2>
@@ -85,58 +82,55 @@
                         <label for="provincia">Provincia *</label>
                         <select id="provincia" name="provincia" required>
                             <option value="">Selecciona provincia</option>
-                            <option value="Madrid">Madrid</option>
-                            <option value="Barcelona">Barcelona</option>
-                            <option value="Valencia">Valencia</option>
-                            <option value="Sevilla">Sevilla</option>
-                            <option value="Zaragoza">Zaragoza</option>
-                            <option value="Málaga">Málaga</option>
-                            <option value="Vizcaya">Vizcaya</option>
-                            <option value="Alicante">Alicante</option>
-                            <option value="Las Palmas">Las Palmas</option>
-                            <option value="Murcia">Murcia</option>
-                            <option value="Cádiz">Cádiz</option>
-                            <option value="Baleares">Baleares</option>
-                            <option value="Asturias">Asturias</option>
-                            <option value="Cantabria">Cantabria</option>
-                            <option value="Navarra">Navarra</option>
-                            <option value="Granada">Granada</option>
-                            <option value="Córdoba">Córdoba</option>
-                            <option value="Pontevedra">Pontevedra</option>
                             <option value="A Coruña">A Coruña</option>
-                            <option value="Guipúzcoa">Guipúzcoa</option>
-                            <option value="Toledo">Toledo</option>
-                            <option value="Tarragona">Tarragona</option>
+                            <option value="Álava">Álava</option>
+                            <option value="Albacete">Albacete</option>
+                            <option value="Alicante">Alicante</option>
                             <option value="Almería">Almería</option>
-                            <option value="Girona">Girona</option>
-                            <option value="Huelva">Huelva</option>
-                            <option value="Salamanca">Salamanca</option>
-                            <option value="Jaén">Jaén</option>
-                            <option value="Valladolid">Valladolid</option>
-                            <option value="Castellón">Castellón</option>
+                            <option value="Asturias">Asturias</option>
+                            <option value="Ávila">Ávila</option>
                             <option value="Badajoz">Badajoz</option>
-                            <option value="León">León</option>
-                            <option value="Lleida">Lleida</option>
+                            <option value="Barcelona">Barcelona</option>
                             <option value="Burgos">Burgos</option>
                             <option value="Cáceres">Cáceres</option>
-                            <option value="Ourense">Ourense</option>
-                            <option value="Álava">Álava</option>
-                            <option value="La Rioja">La Rioja</option>
-                            <option value="Lugo">Lugo</option>
+                            <option value="Cádiz">Cádiz</option>
+                            <option value="Cantabria">Cantabria</option>
+                            <option value="Castellón">Castellón</option>
                             <option value="Ciudad Real">Ciudad Real</option>
-                            <option value="Huesca">Huesca</option>
-                            <option value="Guadalajara">Guadalajara</option>
-                            <option value="Albacete">Albacete</option>
+                            <option value="Córdoba">Córdoba</option>
                             <option value="Cuenca">Cuenca</option>
-                            <option value="Santa Cruz de Tenerife">Santa Cruz de Tenerife</option>
-                            <option value="Zamora">Zamora</option>
+                            <option value="Girona">Girona</option>
+                            <option value="Granada">Granada</option>
+                            <option value="Guadalajara">Guadalajara</option>
+                            <option value="Guipúzcoa">Guipúzcoa</option>
+                            <option value="Huelva">Huelva</option>
+                            <option value="Huesca">Huesca</option>
+                            <option value="Jaén">Jaén</option>
+                            <option value="La Rioja">La Rioja</option>
+                            <option value="Las Palmas">Las Palmas</option>
+                            <option value="León">León</option>
+                            <option value="Lleida">Lleida</option>
+                            <option value="Lugo">Lugo</option>
+                            <option value="Madrid">Madrid</option>
+                            <option value="Málaga">Málaga</option>
+                            <option value="Murcia">Murcia</option>
+                            <option value="Navarra">Navarra</option>
+                            <option value="Ourense">Ourense</option>
                             <option value="Palencia">Palencia</option>
-                            <option value="Ávila">Ávila</option>
+                            <option value="Pontevedra">Pontevedra</option>
+                            <option value="Salamanca">Salamanca</option>
+                            <option value="Santa Cruz de Tenerife">Santa Cruz de Tenerife</option>
                             <option value="Segovia">Segovia</option>
+                            <option value="Sevilla">Sevilla</option>
                             <option value="Soria">Soria</option>
+                            <option value="Tarragona">Tarragona</option>
                             <option value="Teruel">Teruel</option>
-                            <option value="Ceuta">Ceuta</option>
-                            <option value="Melilla">Melilla</option>
+                            <option value="Toledo">Toledo</option>
+                            <option value="Valencia">Valencia</option>
+                            <option value="Valladolid">Valladolid</option>
+                            <option value="Vizcaya">Vizcaya</option>
+                            <option value="Zamora">Zamora</option>
+                            <option value="Zaragoza">Zaragoza</option>
                         </select>
                     </div>
 
@@ -148,23 +142,23 @@
                     <h2 style="margin: 30px 0 25px; font-size: 20px;">Método de Pago</h2>
 
                     <div style="background: var(--gris-claro); padding: 20px; border-radius: 8px; margin-bottom: 20px;">
-                        <label style="display: flex; align-items: flex-start; gap: 12px; cursor: pointer;">
-                            <input type="radio" name="pago" value="transferencia" checked style="margin-top: 4px;">
-                            <span><strong>Transferencia Bancaria</strong><br><span style="font-size: 14px; color: #666;">Recibirás los datos por email</span></span>
+                        <label style="display: flex; align-items: center; gap: 10px; cursor: pointer;">
+                            <input type="radio" name="pago" value="transferencia" checked>
+                            <span><strong>Transferencia Bancaria</strong> - Recibirás los datos por email</span>
                         </label>
                     </div>
 
                     <div style="background: var(--gris-claro); padding: 20px; border-radius: 8px; margin-bottom: 20px;">
-                        <label style="display: flex; align-items: flex-start; gap: 12px; cursor: pointer;">
-                            <input type="radio" name="pago" value="bizum" style="margin-top: 4px;">
-                            <span><strong>Bizum</strong><br><span style="font-size: 14px; color: #666;">Pago instantáneo desde tu móvil</span></span>
+                        <label style="display: flex; align-items: center; gap: 10px; cursor: pointer;">
+                            <input type="radio" name="pago" value="bizum">
+                            <span><strong>Bizum</strong> - Pago instantáneo desde tu móvil</span>
                         </label>
                     </div>
 
                     <div style="background: #f0f8ff; padding: 20px; border-radius: 8px; border: 2px solid #4CAF50;">
-                        <label style="display: flex; align-items: flex-start; gap: 12px; cursor: pointer;">
-                            <input type="radio" name="pago" value="whatsapp" style="margin-top: 4px;">
-                            <span><strong>💬 Confirmar por WhatsApp</strong><br><span style="font-size: 14px; color: #666;">Te contactamos para coordinar pago y envío</span></span>
+                        <label style="display: flex; align-items: center; gap: 10px; cursor: pointer;">
+                            <input type="radio" name="pago" value="whatsapp">
+                            <span><strong>💬 Confirmar por WhatsApp</strong> - Te contactamos para coordinar pago y envío</span>
                         </label>
                     </div>
 
@@ -222,7 +216,7 @@
             standardPrice: 4.90
         };
 
-        const WHATSAPP_NUMBER = '34600000000';
+        const WHATSAPP_NUMBER = '34652600700';
 
         function renderOrderSummary() {
             // Redirigir si carrito vacío
