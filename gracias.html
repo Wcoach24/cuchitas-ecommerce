@@ -17,7 +17,7 @@
     <header>
         <div class="header-container">
             <a href="/" class="logo">
-                <img src="images/logo-cuchitas.svg" alt="Cuchitas" width="180" height="45">
+                <img src="images/logo-cuchitas-header.webp" alt="Cuchitas" width="55" height="55" style="border-radius: 50%;">
             </a>
         </div>
     </header>
@@ -62,6 +62,22 @@
     </footer>
 
     <script>
+        // Mobile menu
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const nav = document.querySelector('nav');
+        if (mobileMenuBtn && nav) {
+            mobileMenuBtn.addEventListener('click', () => {
+                nav.classList.toggle('active');
+                mobileMenuBtn.textContent = nav.classList.contains('active') ? '✕' : '☰';
+            });
+            nav.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    nav.classList.remove('active');
+                    mobileMenuBtn.textContent = '☰';
+                });
+            });
+        }
+
         document.addEventListener('DOMContentLoaded', () => {
             // Obtener datos del pedido desde sessionStorage
             const orderData = JSON.parse(sessionStorage.getItem('cuchitas_last_order') || '{}');

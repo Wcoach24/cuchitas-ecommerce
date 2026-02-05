@@ -17,7 +17,7 @@
     <header>
         <div class="header-container">
             <a href="/" class="logo">
-                <img src="images/logo-cuchitas.svg" alt="Cuchitas" width="180" height="45">
+                <img src="images/logo-cuchitas-header.webp" alt="Cuchitas" width="55" height="55" style="border-radius: 50%;">
             </a>
             <div style="color: white; display: flex; align-items: center; gap: 10px;">
                 <span>🔒</span>
@@ -212,6 +212,22 @@
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="js/cart.js"></script>
     <script>
+        // Mobile menu
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const nav = document.querySelector('nav');
+        if (mobileMenuBtn && nav) {
+            mobileMenuBtn.addEventListener('click', () => {
+                nav.classList.toggle('active');
+                mobileMenuBtn.textContent = nav.classList.contains('active') ? '✕' : '☰';
+            });
+            nav.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    nav.classList.remove('active');
+                    mobileMenuBtn.textContent = '☰';
+                });
+            });
+        }
+
         // Configuración Supabase
         const SUPABASE_URL = 'https://bcicjjkgjgajxbrwmeyf.supabase.co';
         const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJjaWNqamtnamdhanhicndtZXlmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjkxODU3ODIsImV4cCI6MjA4NDc2MTc4Mn0.BqgzIMTWvDIzbx1lofd7ZHYWt3FWjdpWc89kBaQGvrs';
