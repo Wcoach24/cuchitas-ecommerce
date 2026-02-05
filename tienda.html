@@ -22,10 +22,7 @@
     <header>
         <div class="header-container">
             <a href="/" class="logo">
-                <div>
-                    <span class="logo-text">Cuchitas<span class="logo-chile">🌶️</span></span>
-                    <span class="logo-underline"></span>
-                </div>
+                <img src="images/logo-cuchitas-header.webp" alt="Cuchitas" width="55" height="55" style="border-radius: 50%;">
             </a>
             <nav>
                 <a href="index.html">Inicio</a>
@@ -105,7 +102,7 @@
     </footer>
 
     <!-- WhatsApp Float -->
-    <a href="https://wa.me/34600000000" class="whatsapp-float" target="_blank" rel="noopener">
+    <a href="https://wa.me/34652600700" class="whatsapp-float" target="_blank" rel="noopener">
         💬 ¿Dudas? WhatsApp
     </a>
 
@@ -113,6 +110,22 @@
     <script src="js/cart.js"></script>
     <script src="js/products.js"></script>
     <script>
+        // Mobile menu
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const nav = document.querySelector('nav');
+        if (mobileMenuBtn && nav) {
+            mobileMenuBtn.addEventListener('click', () => {
+                nav.classList.toggle('active');
+                mobileMenuBtn.textContent = nav.classList.contains('active') ? '✕' : '☰';
+            });
+            nav.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    nav.classList.remove('active');
+                    mobileMenuBtn.textContent = '☰';
+                });
+            });
+        }
+
         let currentCategory = 'all';
 
         // Obtener categoría de URL si existe

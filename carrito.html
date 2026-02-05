@@ -22,10 +22,7 @@
     <header>
         <div class="header-container">
             <a href="/" class="logo">
-                <div>
-                    <span class="logo-text">Cuchitas<span class="logo-chile">🌶️</span></span>
-                    <span class="logo-underline"></span>
-                </div>
+                <img src="images/logo-cuchitas-header.webp" alt="Cuchitas" width="55" height="55" style="border-radius: 50%;">
             </a>
             <nav>
                 <a href="index.html">Inicio</a>
@@ -122,12 +119,28 @@
     <script src="js/cart.js"></script>
     <script src="js/products.js"></script>
     <script>
+        // Mobile menu
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const nav = document.querySelector('nav');
+        if (mobileMenuBtn && nav) {
+            mobileMenuBtn.addEventListener('click', () => {
+                nav.classList.toggle('active');
+                mobileMenuBtn.textContent = nav.classList.contains('active') ? '✕' : '☰';
+            });
+            nav.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    nav.classList.remove('active');
+                    mobileMenuBtn.textContent = '☰';
+                });
+            });
+        }
+
         const SHIPPING_CONFIG = {
             freeThreshold: 20,
             standardPrice: 4.90
         };
 
-        const WHATSAPP_NUMBER = '34600000000'; // Cambiar por número real
+        const WHATSAPP_NUMBER = '34652600700';
 
         function renderCart() {
             const emptyEl = document.getElementById('cart-empty');
