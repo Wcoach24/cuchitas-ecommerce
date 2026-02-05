@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tortillas de Maíz Auténticas | Cuchitas - Sabor Mexicano a Domicilio en España</title>
+    <meta name="description" content="Tortillas de maíz nixtamalizado hechas a mano en España. 100% artesanales, veganas y sin gluten. Envío gratuito en pedidos superiores a 20€.">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://cuchitas.com/">
+    <meta property="og:title" content="Cuchitas - Tortillas de Maíz Auténticas a Domicilio">
+    <meta property="og:description" content="El sabor de México en tu puerta en 24-48h. Tortillas artesanales, veganas y sin gluten.">
+    <meta property="og:image" content="images/og-image.jpg">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/styles.css">
+
+    <!-- Schema.org -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Cuchitas",
+        "url": "https://cuchitas.com",
+        "logo": "https://cuchitas.com/images/logo.svg",
+        "description": "Tortillas de maíz nixtamalizado artesanales en España",
+        "sameAs": ["https://facebook.com/cuchitas", "https://instagram.com/cuchitas"]
+    }
+    </script>
+</head>
+<body>
+    <!-- Top Banner -->
+    <div class="top-banner">
+        🚚 ¡Envío GRATUITO en pedidos superiores a 20€! | Entrega en 24-48h
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <a href="/" class="logo">
+                <div>
+                    <span class="logo-text">Cuchitas<span class="logo-chile">🌶️</span></span>
+                    <span class="logo-underline"></span>
+                </div>
+            </a>
+            <nav>
+                <a href="tienda.html">Tienda</a>
+                <a href="#como-funciona">Cómo Funciona</a>
+                <a href="#testimonios">Opiniones</a>
+                <a href="#faq">FAQ</a>
+                <a href="carrito.html" class="cart-btn">
+                    🛒 Carrito
+                    <span class="cart-count" style="display: none;">0</span>
+                </a>
+            </nav>
+            <button class="mobile-menu-btn">☰</button>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="hero-badge">🇲🇽 Auténtico sabor mexicano en España</div>
+                <h1>Tortillas de maíz <span>hechas a mano</span>. Como en casa.</h1>
+                <p class="hero-subtitle">
+                    El sabor de México en tu puerta en 24-48h. Tortillas de maíz nixtamalizado,
+                    100% artesanales, veganas y sin gluten. Elaboradas con amor en España.
+                </p>
+                <div class="hero-cta">
+                    <a href="tienda.html" class="btn-primary">🛒 Pedir Ahora</a>
+                    <a href="#como-funciona" class="btn-secondary">Ver cómo funciona</a>
+                </div>
+                <div class="hero-social-proof">
+                    <span class="stars">★★★★★</span>
+                    <span><strong>4.9/5</strong> · Más de 500 familias ya disfrutan el auténtico sabor</span>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="images/hero-tortillas.webp"
+                     alt="Tortillas de maíz nixtamalizado artesanales Cuchitas"
+                     width="450" height="375"
+                     loading="eager">
+                <div class="hero-badges-row">
+                    <div class="badge-item"><span>🌱</span><span>Vegano</span></div>
+                    <div class="badge-item"><span>🌾</span><span>Sin Gluten</span></div>
+                    <div class="badge-item"><span>👨‍🍳</span><span>Artesanal</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Bar -->
+    <div class="trust-bar">
+        <div class="trust-bar-container">
+            <div class="trust-item"><span>🚚</span><span>Envío 24-48h</span></div>
+            <div class="trust-item"><span>✅</span><span>100% Artesanal</span></div>
+            <div class="trust-item"><span>🔒</span><span>Pago Seguro</span></div>
+            <div class="trust-item"><span>💬</span><span>Atención WhatsApp</span></div>
+            <div class="trust-item"><span>⭐</span><span>+500 Clientes</span></div>
+        </div>
+    </div>
+
+    <!-- Productos Destacados -->
+    <section class="productos" id="productos">
+        <div class="section-header">
+            <h2>Nuestros Productos</h2>
+            <p>Tortillas artesanales de maíz nixtamalizado, hechas con la receta tradicional mexicana</p>
+        </div>
+        <div class="productos-grid" id="productos-destacados">
+            <!-- Productos cargados via JS -->
+            <div style="text-align: center; padding: 40px; grid-column: 1/-1;">
+                <p>Cargando productos...</p>
+            </div>
+        </div>
+        <div style="text-align: center; margin-top: 40px;">
+            <a href="tienda.html" class="btn-primary">Ver todos los productos →</a>
+        </div>
+    </section>
+
+    <!-- Cómo Funciona -->
+    <section class="como-funciona" id="como-funciona" style="background: var(--gris-claro);">
+        <div class="section-header">
+            <h2>¿Cómo funciona?</h2>
+            <p>Recibe el auténtico sabor de México en 3 simples pasos</p>
+        </div>
+        <div class="pasos-grid" style="max-width: 900px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px;">
+            <div class="paso" style="text-align: center;">
+                <div style="width: 80px; height: 80px; background: var(--verde-oscuro); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 32px; margin: 0 auto 20px;">1</div>
+                <h3 style="margin-bottom: 10px;">Elige tus tortillas</h3>
+                <p style="color: #666;">Selecciona el tamaño y cantidad que prefieras. Tenemos opciones para todos.</p>
+            </div>
+            <div class="paso" style="text-align: center;">
+                <div style="width: 80px; height: 80px; background: var(--verde-oscuro); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 32px; margin: 0 auto 20px;">2</div>
+                <h3 style="margin-bottom: 10px;">Las hacemos frescas</h3>
+                <p style="color: #666;">Preparamos tu pedido con ingredientes frescos y la receta tradicional.</p>
+            </div>
+            <div class="paso" style="text-align: center;">
+                <div style="width: 80px; height: 80px; background: var(--verde-oscuro); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 32px; margin: 0 auto 20px;">3</div>
+                <h3 style="margin-bottom: 10px;">Recibe en casa</h3>
+                <p style="color: #666;">Te las enviamos en 24-48h. Envasadas al vacío para máxima frescura.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonios -->
+    <section class="testimonios" id="testimonios">
+        <div class="section-header">
+            <h2>Lo que dicen nuestros clientes</h2>
+            <p>Más de 500 familias ya disfrutan del auténtico sabor mexicano</p>
+        </div>
+        <div class="testimonios-grid">
+            <div class="testimonio-card">
+                <div class="testimonio-stars">★★★★★</div>
+                <p class="testimonio-texto">"20 años en España esperando unas tortillas como estas. Por fin unas que no se rompen y aguantan bien el taco. ¡Gracias por traernos este rinconcito mexicano!"</p>
+                <div class="testimonio-autor">
+                    <div class="autor-avatar">EP</div>
+                    <div class="autor-info"><strong>Edgar P.</strong><span>Barcelona</span></div>
+                </div>
+            </div>
+            <div class="testimonio-card">
+                <div class="testimonio-stars">★★★★★</div>
+                <p class="testimonio-texto">"¡CALLATE LOS OJOS! Que buenííííísimas. No tienen progenitora... jajaja. Apenas hoy las probé... ¡mil gracias!"</p>
+                <div class="testimonio-autor">
+                    <div class="autor-avatar">BT</div>
+                    <div class="autor-info"><strong>Beatriz T.</strong><span>Zaragoza</span></div>
+                </div>
+            </div>
+            <div class="testimonio-card">
+                <div class="testimonio-stars">★★★★★</div>
+                <p class="testimonio-texto">"A mis hijos les gustan mucho. Las recomiendo 100%. Por fin unas tortillas que no saben a cartón."</p>
+                <div class="testimonio-autor">
+                    <div class="autor-avatar">GH</div>
+                    <div class="autor-info"><strong>Gabriela H.</strong><span>Madrid</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq" id="faq" style="background: var(--gris-claro);">
+        <div class="section-header">
+            <h2>Preguntas Frecuentes</h2>
+        </div>
+        <div class="faq-container">
+            <div class="faq-item">
+                <button class="faq-question">¿Cuánto tardan en llegar?<span>+</span></button>
+                <div class="faq-answer">Los pedidos se entregan en 24-48 horas laborables en toda España peninsular. Preparamos tu pedido el mismo día si pides antes de las 14h.</div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question">¿Se pueden congelar?<span>+</span></button>
+                <div class="faq-answer">¡Sí! Puedes congelarlas hasta 3 meses. Para consumir, simplemente caliéntalas directamente del congelador en un comal o sartén caliente.</div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question">¿Cuánto duran sin congelar?<span>+</span></button>
+                <div class="faq-answer">En refrigeración duran hasta 15 días gracias al envasado al vacío. Una vez abierto el paquete, recomendamos consumir en 5-7 días.</div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question">¿Son de maíz nixtamalizado?<span>+</span></button>
+                <div class="faq-answer">¡Por supuesto! Utilizamos maíz nixtamalizado de alta calidad. Este proceso tradicional es lo que les da el sabor auténtico y la textura perfecta.</div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question">¿Tienen conservantes?<span>+</span></button>
+                <div class="faq-answer">No. Nuestras tortillas son 100% naturales: maíz nixtamalizado, agua y cal. Sin conservantes, sin gluten y aptas para veganos.</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Final -->
+    <section class="cta-final">
+        <h2>¿Listo para probar el auténtico sabor?</h2>
+        <p>Únete a más de 500 familias que ya disfrutan de nuestras tortillas</p>
+        <a href="tienda.html" class="btn-primary">🛒 Pedir Ahora - Envío Gratis >20€</a>
+        <div class="garantia">🛡️ Garantía de satisfacción · Si no te encantan, te devolvemos el dinero</div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-col">
+                <h4>Cuchitas</h4>
+                <p>Tortillas artesanales hechas con amor en España. El auténtico sabor de México.</p>
+                <div class="footer-social">
+                    <a href="https://facebook.com/cuchitas" target="_blank" rel="noopener">📘</a>
+                    <a href="https://instagram.com/cuchitas" target="_blank" rel="noopener">📸</a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Tienda</h4>
+                <a href="tienda.html">Todos los Productos</a>
+                <a href="tienda.html?cat=tortillas">Tortillas</a>
+                <a href="tienda.html?cat=packs">Packs Ahorro</a>
+            </div>
+            <div class="footer-col">
+                <h4>Información</h4>
+                <a href="#como-funciona">Cómo Funciona</a>
+                <a href="#faq">FAQ</a>
+                <a href="contacto.html">Contacto</a>
+            </div>
+            <div class="footer-col">
+                <h4>Legal</h4>
+                <a href="privacidad.html">Privacidad</a>
+                <a href="cookies.html">Cookies</a>
+                <a href="terminos.html">Términos</a>
+            </div>
+        </div>
+        <div class="footer-bottom">© 2026 Cuchitas · Saben a México · Hecho con ❤️ en España</div>
+    </footer>
+
+    <!-- WhatsApp Float -->
+    <a href="https://wa.me/34600000000" class="whatsapp-float" target="_blank" rel="noopener">
+        💬 ¿Dudas? WhatsApp
+    </a>
+
+    <!-- Scripts -->
+    <script src="js/cart.js"></script>
+    <script src="js/products.js"></script>
+    <script>
+        // Cargar productos destacados
+        document.addEventListener('DOMContentLoaded', async () => {
+            await window.productManager.load();
+            const featured = window.productManager.getFeatured();
+            window.productManager.renderGrid(featured, 'productos-destacados');
+        });
+
+        // FAQ Toggle
+        document.querySelectorAll('.faq-question').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const item = btn.parentElement;
+                const isActive = item.classList.contains('active');
+
+                // Cerrar todos
+                document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
+                document.querySelectorAll('.faq-question span').forEach(s => s.textContent = '+');
+
+                // Abrir actual si estaba cerrado
+                if (!isActive) {
+                    item.classList.add('active');
+                    btn.querySelector('span').textContent = '−';
+                }
+            });
+        });
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(a => {
+            a.addEventListener('click', e => {
+                e.preventDefault();
+                const target = document.querySelector(a.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

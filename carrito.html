@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrito | Cuchitas - Tortillas de Maíz Artesanales</title>
+    <meta name="description" content="Tu carrito de compras en Cuchitas.">
+
+    <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- Top Banner -->
+    <div class="top-banner">
+        🚚 ¡Envío GRATUITO en pedidos superiores a 20€! | Entrega en 24-48h
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <a href="/" class="logo">
+                <div>
+                    <span class="logo-text">Cuchitas<span class="logo-chile">🌶️</span></span>
+                    <span class="logo-underline"></span>
+                </div>
+            </a>
+            <nav>
+                <a href="index.html">Inicio</a>
+                <a href="tienda.html">Tienda</a>
+                <a href="index.html#faq">FAQ</a>
+                <a href="carrito.html" class="cart-btn" style="background: var(--amarillo);">
+                    🛒 Carrito
+                    <span class="cart-count" style="display: none;">0</span>
+                </a>
+            </nav>
+            <button class="mobile-menu-btn">☰</button>
+        </div>
+    </header>
+
+    <!-- Cart Content -->
+    <main class="cart-page">
+        <h1 style="margin-bottom: 30px;">Tu Carrito</h1>
+
+        <!-- Empty Cart -->
+        <div class="cart-empty" id="cart-empty" style="display: none;">
+            <div class="cart-empty-icon">🛒</div>
+            <h2>Tu carrito está vacío</h2>
+            <p>¡Añade algunas tortillas deliciosas!</p>
+            <a href="tienda.html" class="btn-primary">Ver productos →</a>
+        </div>
+
+        <!-- Cart with items -->
+        <div class="cart-grid" id="cart-content" style="display: none;">
+            <!-- Cart Items -->
+            <div class="cart-items" id="cart-items">
+                <!-- Items cargados via JS -->
+            </div>
+
+            <!-- Cart Summary -->
+            <div class="cart-summary">
+                <h3>Resumen del Pedido</h3>
+
+                <div class="free-shipping-progress" id="shipping-progress">
+                    <!-- Cargado via JS -->
+                </div>
+
+                <div class="summary-row">
+                    <span>Subtotal</span>
+                    <span id="subtotal">0,00€</span>
+                </div>
+                <div class="summary-row">
+                    <span>Envío</span>
+                    <span id="shipping">Calculando...</span>
+                </div>
+                <div class="summary-row total">
+                    <span>Total</span>
+                    <span id="total">0,00€</span>
+                </div>
+
+                <a href="checkout.html" class="btn-primary" id="btn-checkout">
+                    Continuar al Pago →
+                </a>
+
+                <a href="#" class="btn-whatsapp" id="btn-whatsapp">
+                    💬 Pedir por WhatsApp
+                </a>
+
+                <p style="text-align: center; font-size: 12px; color: #666; margin-top: 15px;">
+                    🔒 Pago 100% seguro · 🚚 Envío en 24-48h
+                </p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-col">
+                <h4>Cuchitas</h4>
+                <p>Tortillas artesanales hechas con amor en España.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Tienda</h4>
+                <a href="tienda.html">Todos los Productos</a>
+            </div>
+            <div class="footer-col">
+                <h4>Ayuda</h4>
+                <a href="index.html#faq">FAQ</a>
+            </div>
+            <div class="footer-col">
+                <h4>Legal</h4>
+                <a href="privacidad.html">Privacidad</a>
+            </div>
+        </div>
+        <div class="footer-bottom">© 2026 Cuchitas · Saben a México</div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/cart.js"></script>
+    <script src="js/products.js"></script>
+    <script>
+        const SHIPPING_CONFIG = {
+            freeThreshold: 20,
+            standardPrice: 4.90
+        };
+
+        const WHATSAPP_NUMBER = '34600000000'; // Cambiar por número real
+
+        function renderCart() {
+            const emptyEl = document.getElementById('cart-empty');
+            const contentEl = document.getElementById('cart-content');
+            const itemsEl = document.getElementById('cart-items');
+
+            if (window.cart.isEmpty()) {
+                emptyEl.style.display = 'block';
+                contentEl.style.display = 'none';
+                return;
+            }
+
+            emptyEl.style.display = 'none';
+            contentEl.style.display = 'grid';
+
+            // Renderizar items
+            itemsEl.innerHTML = window.cart.items.map(item => `
+                <div class="cart-item" data-id="${item.id}">
+                    <img src="${item.image}" alt="${item.name}" class="cart-item-image">
+                    <div class="cart-item-info">
+                        <h3>${item.name}</h3>
+                        <div class="cart-item-price">${item.price.toFixed(2)}€ / unidad</div>
+                    </div>
+                    <div class="cart-item-actions">
+                        <div class="quantity-selector">
+                            <button class="qty-btn qty-minus" data-id="${item.id}">−</button>
+                            <input type="number" class="qty-input" value="${item.quantity}" min="1" data-id="${item.id}">
+                            <button class="qty-btn qty-plus" data-id="${item.id}">+</button>
+                        </div>
+                        <div style="font-weight: 700; font-size: 18px;">${(item.price * item.quantity).toFixed(2)}€</div>
+                        <button class="btn-remove" data-id="${item.id}">Eliminar</button>
+                    </div>
+                </div>
+            `).join('');
+
+            // Event listeners
+            itemsEl.querySelectorAll('.qty-minus').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    window.cart.decrement(btn.dataset.id);
+                    renderCart();
+                });
+            });
+
+            itemsEl.querySelectorAll('.qty-plus').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    window.cart.increment(btn.dataset.id);
+                    renderCart();
+                });
+            });
+
+            itemsEl.querySelectorAll('.qty-input').forEach(input => {
+                input.addEventListener('change', () => {
+                    const qty = parseInt(input.value);
+                    if (qty > 0) {
+                        window.cart.updateQuantity(input.dataset.id, qty);
+                        renderCart();
+                    }
+                });
+            });
+
+            itemsEl.querySelectorAll('.btn-remove').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    window.cart.remove(btn.dataset.id);
+                    renderCart();
+                });
+            });
+
+            // Actualizar resumen
+            updateSummary();
+        }
+
+        function updateSummary() {
+            const subtotal = window.cart.getSubtotal();
+            const shipping = window.cart.getShipping(SHIPPING_CONFIG);
+            const total = subtotal + shipping;
+            const remaining = window.cart.getRemainingForFreeShipping(SHIPPING_CONFIG.freeThreshold);
+
+            document.getElementById('subtotal').textContent = subtotal.toFixed(2) + '€';
+            document.getElementById('shipping').textContent = shipping === 0 ? 'GRATIS 🎉' : shipping.toFixed(2) + '€';
+            document.getElementById('total').textContent = total.toFixed(2) + '€';
+
+            const progressEl = document.getElementById('shipping-progress');
+            if (remaining > 0) {
+                progressEl.className = 'free-shipping-progress';
+                progressEl.innerHTML = `
+                    🚚 ¡Te faltan <strong>${remaining.toFixed(2)}€</strong> para envío GRATIS!
+                    <div style="background: #e0e0e0; height: 8px; border-radius: 4px; margin-top: 10px;">
+                        <div style="background: #9ACD32; height: 100%; border-radius: 4px; width: ${Math.min(100, (subtotal / SHIPPING_CONFIG.freeThreshold) * 100)}%;"></div>
+                    </div>
+                `;
+            } else {
+                progressEl.className = 'free-shipping-progress achieved';
+                progressEl.innerHTML = '🎉 ¡Tienes envío GRATIS!';
+            }
+
+            // Actualizar enlace WhatsApp
+            document.getElementById('btn-whatsapp').href = window.cart.getWhatsAppLink(WHATSAPP_NUMBER);
+        }
+
+        // Suscribirse a cambios
+        window.cart.subscribe(renderCart);
+
+        // Renderizar al cargar
+        document.addEventListener('DOMContentLoaded', renderCart);
+    </script>
+</body>
+</html>

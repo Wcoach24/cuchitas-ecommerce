@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tienda | Cuchitas - Tortillas de Maíz Artesanales</title>
+    <meta name="description" content="Compra tortillas de maíz nixtamalizado artesanales. Envío gratuito en pedidos superiores a 20€.">
+
+    <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- Top Banner -->
+    <div class="top-banner">
+        🚚 ¡Envío GRATUITO en pedidos superiores a 20€! | Entrega en 24-48h
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <a href="/" class="logo">
+                <div>
+                    <span class="logo-text">Cuchitas<span class="logo-chile">🌶️</span></span>
+                    <span class="logo-underline"></span>
+                </div>
+            </a>
+            <nav>
+                <a href="index.html">Inicio</a>
+                <a href="tienda.html" style="color: var(--amarillo);">Tienda</a>
+                <a href="index.html#faq">FAQ</a>
+                <a href="carrito.html" class="cart-btn">
+                    🛒 Carrito
+                    <span class="cart-count" style="display: none;">0</span>
+                </a>
+            </nav>
+            <button class="mobile-menu-btn">☰</button>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section style="background: var(--verde-oscuro); padding: 60px 20px; text-align: center;">
+        <h1 style="color: white; font-size: 42px; margin-bottom: 15px;">Nuestra Tienda</h1>
+        <p style="color: rgba(255,255,255,0.9); font-size: 18px; max-width: 600px; margin: 0 auto;">
+            Descubre nuestras tortillas artesanales de maíz nixtamalizado y complementos mexicanos
+        </p>
+    </section>
+
+    <!-- Trust Bar -->
+    <div class="trust-bar">
+        <div class="trust-bar-container">
+            <div class="trust-item"><span>🚚</span><span>Envío 24-48h</span></div>
+            <div class="trust-item"><span>✅</span><span>100% Artesanal</span></div>
+            <div class="trust-item"><span>🔒</span><span>Pago Seguro</span></div>
+            <div class="trust-item"><span>⭐</span><span>+500 Clientes</span></div>
+        </div>
+    </div>
+
+    <!-- Productos -->
+    <section class="productos">
+        <!-- Filtros de categoría -->
+        <div class="category-filters" id="category-filters">
+            <!-- Cargado via JS -->
+        </div>
+
+        <!-- Grid de productos -->
+        <div class="productos-grid" id="productos-grid">
+            <div style="text-align: center; padding: 60px; grid-column: 1/-1;">
+                <p>Cargando productos...</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-col">
+                <h4>Cuchitas</h4>
+                <p>Tortillas artesanales hechas con amor en España.</p>
+                <div class="footer-social">
+                    <a href="https://facebook.com/cuchitas" target="_blank" rel="noopener">📘</a>
+                    <a href="https://instagram.com/cuchitas" target="_blank" rel="noopener">📸</a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Tienda</h4>
+                <a href="tienda.html">Todos los Productos</a>
+                <a href="tienda.html?cat=tortillas">Tortillas</a>
+                <a href="tienda.html?cat=packs">Packs Ahorro</a>
+            </div>
+            <div class="footer-col">
+                <h4>Información</h4>
+                <a href="index.html#como-funciona">Cómo Funciona</a>
+                <a href="index.html#faq">FAQ</a>
+            </div>
+            <div class="footer-col">
+                <h4>Legal</h4>
+                <a href="privacidad.html">Privacidad</a>
+                <a href="terminos.html">Términos</a>
+            </div>
+        </div>
+        <div class="footer-bottom">© 2026 Cuchitas · Saben a México</div>
+    </footer>
+
+    <!-- WhatsApp Float -->
+    <a href="https://wa.me/34600000000" class="whatsapp-float" target="_blank" rel="noopener">
+        💬 ¿Dudas? WhatsApp
+    </a>
+
+    <!-- Scripts -->
+    <script src="js/cart.js"></script>
+    <script src="js/products.js"></script>
+    <script>
+        let currentCategory = 'all';
+
+        // Obtener categoría de URL si existe
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.has('cat')) {
+            currentCategory = urlParams.get('cat');
+        }
+
+        document.addEventListener('DOMContentLoaded', async () => {
+            await window.productManager.load();
+
+            // Renderizar filtros
+            window.productManager.renderCategoryFilters('category-filters', currentCategory);
+
+            // Renderizar productos
+            renderProducts(currentCategory);
+
+            // Event listeners para filtros
+            document.getElementById('category-filters').addEventListener('click', (e) => {
+                const btn = e.target.closest('.category-filter');
+                if (btn) {
+                    const category = btn.dataset.category;
+
+                    // Actualizar estado activo
+                    document.querySelectorAll('.category-filter').forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+
+                    // Renderizar productos filtrados
+                    renderProducts(category);
+
+                    // Actualizar URL
+                    const url = new URL(window.location);
+                    if (category === 'all') {
+                        url.searchParams.delete('cat');
+                    } else {
+                        url.searchParams.set('cat', category);
+                    }
+                    window.history.pushState({}, '', url);
+                }
+            });
+        });
+
+        function renderProducts(category) {
+            const products = window.productManager.getByCategory(category);
+            window.productManager.renderGrid(products, 'productos-grid');
+        }
+    </script>
+</body>
+</html>

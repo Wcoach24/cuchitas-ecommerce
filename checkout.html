@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout | Cuchitas</title>
+    <meta name="description" content="Finaliza tu pedido en Cuchitas.">
+
+    <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- Header simplificado -->
+    <header>
+        <div class="header-container">
+            <a href="/" class="logo">
+                <div>
+                    <span class="logo-text">Cuchitas<span class="logo-chile">🌶️</span></span>
+                    <span class="logo-underline"></span>
+                </div>
+            </a>
+            <div style="color: white; display: flex; align-items: center; gap: 10px;">
+                <span>🔒</span>
+                <span>Pago Seguro</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Checkout Content -->
+    <main class="checkout-page">
+        <a href="carrito.html" style="color: var(--verde-oscuro); margin-bottom: 20px; display: inline-block;">
+            ← Volver al carrito
+        </a>
+
+        <h1 style="margin-bottom: 30px;">Finalizar Pedido</h1>
+
+        <div style="display: grid; grid-template-columns: 1fr 400px; gap: 40px;">
+            <!-- Formulario -->
+            <div class="checkout-form">
+                <h2 style="margin-bottom: 25px; font-size: 20px;">Datos de Envío</h2>
+
+                <form id="checkout-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="nombre">Nombre *</label>
+                            <input type="text" id="nombre" name="nombre" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="apellidos">Apellidos *</label>
+                            <input type="text" id="apellidos" name="apellidos" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="email">Email *</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="telefono">Teléfono *</label>
+                            <input type="tel" id="telefono" name="telefono" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="direccion">Dirección *</label>
+                        <input type="text" id="direccion" name="direccion" placeholder="Calle, número, piso..." required>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="cp">Código Postal *</label>
+                            <input type="text" id="cp" name="cp" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="ciudad">Ciudad *</label>
+                            <input type="text" id="ciudad" name="ciudad" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="provincia">Provincia *</label>
+                        <select id="provincia" name="provincia" required>
+                            <option value="">Selecciona provincia</option>
+                            <option value="Madrid">Madrid</option>
+                            <option value="Barcelona">Barcelona</option>
+                            <option value="Valencia">Valencia</option>
+                            <option value="Sevilla">Sevilla</option>
+                            <option value="Zaragoza">Zaragoza</option>
+                            <option value="Málaga">Málaga</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="notas">Notas del pedido (opcional)</label>
+                        <textarea id="notas" name="notas" rows="3" placeholder="Instrucciones de entrega, alergias, etc."></textarea>
+                    </div>
+
+                    <h2 style="margin: 30px 0 25px; font-size: 20px;">Método de Pago</h2>
+
+                    <div style="background: var(--gris-claro); padding: 20px; border-radius: 8px; margin-bottom: 20px;">
+                        <label style="display: flex; align-items: center; gap: 10px; cursor: pointer;">
+                            <input type="radio" name="pago" value="transferencia" checked>
+                            <span><strong>Transferencia Bancaria</strong> - Recibirás los datos por email</span>
+                        </label>
+                    </div>
+
+                    <div style="background: var(--gris-claro); padding: 20px; border-radius: 8px; margin-bottom: 20px;">
+                        <label style="display: flex; align-items: center; gap: 10px; cursor: pointer;">
+                            <input type="radio" name="pago" value="bizum">
+                            <span><strong>Bizum</strong> - Pago instantáneo desde tu móvil</span>
+                        </label>
+                    </div>
+
+                    <div style="background: #f0f8ff; padding: 20px; border-radius: 8px; border: 2px solid #4CAF50;">
+                        <label style="display: flex; align-items: center; gap: 10px; cursor: pointer;">
+                            <input type="radio" name="pago" value="whatsapp">
+                            <span><strong>💬 Confirmar por WhatsApp</strong> - Te contactamos para coordinar pago y envío</span>
+                        </label>
+                    </div>
+
+                    <button type="submit" class="btn-primary" style="width: 100%; margin-top: 30px; justify-content: center;">
+                        Confirmar Pedido →
+                    </button>
+                </form>
+            </div>
+
+            <!-- Resumen del pedido -->
+            <div>
+                <div class="cart-summary" style="position: sticky; top: 100px;">
+                    <h3>Tu Pedido</h3>
+
+                    <div id="order-items" style="margin-bottom: 20px;">
+                        <!-- Items del pedido -->
+                    </div>
+
+                    <div class="summary-row">
+                        <span>Subtotal</span>
+                        <span id="subtotal">0,00€</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Envío</span>
+                        <span id="shipping">Calculando...</span>
+                    </div>
+                    <div class="summary-row total">
+                        <span>Total</span>
+                        <span id="total">0,00€</span>
+                    </div>
+
+                    <div style="text-align: center; margin-top: 20px; padding-top: 20px; border-top: 1px solid var(--gris-medio);">
+                        <p style="font-size: 13px; color: #666;">
+                            🔒 Tus datos están protegidos<br>
+                            📦 Envío en 24-48h laborables
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer simplificado -->
+    <footer style="margin-top: 60px;">
+        <div class="footer-bottom" style="border: none; padding: 30px;">
+            © 2026 Cuchitas · Saben a México
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/cart.js"></script>
+    <script>
+        const SHIPPING_CONFIG = {
+            freeThreshold: 20,
+            standardPrice: 4.90
+        };
+
+        const WHATSAPP_NUMBER = '34600000000';
+
+        function renderOrderSummary() {
+            // Redirigir si carrito vacío
+            if (window.cart.isEmpty()) {
+                window.location.href = 'carrito.html';
+                return;
+            }
+
+            const itemsEl = document.getElementById('order-items');
+            itemsEl.innerHTML = window.cart.items.map(item => `
+                <div style="display: flex; justify-content: space-between; margin-bottom: 12px; font-size: 14px;">
+                    <span>${item.name} × ${item.quantity}</span>
+                    <span style="font-weight: 600;">${(item.price * item.quantity).toFixed(2)}€</span>
+                </div>
+            `).join('');
+
+            const subtotal = window.cart.getSubtotal();
+            const shipping = window.cart.getShipping(SHIPPING_CONFIG);
+            const total = subtotal + shipping;
+
+            document.getElementById('subtotal').textContent = subtotal.toFixed(2) + '€';
+            document.getElementById('shipping').textContent = shipping === 0 ? 'GRATIS' : shipping.toFixed(2) + '€';
+            document.getElementById('total').textContent = total.toFixed(2) + '€';
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            renderOrderSummary();
+
+            // Manejar envío del formulario
+            document.getElementById('checkout-form').addEventListener('submit', async (e) => {
+                e.preventDefault();
+
+                const formData = new FormData(e.target);
+                const data = Object.fromEntries(formData);
+                const paymentMethod = formData.get('pago');
+
+                // Datos del cliente
+                const customerInfo = {
+                    name: `${data.nombre} ${data.apellidos}`,
+                    phone: data.telefono,
+                    email: data.email,
+                    address: `${data.direccion}, ${data.cp} ${data.ciudad}, ${data.provincia}`
+                };
+
+                if (paymentMethod === 'whatsapp') {
+                    // Abrir WhatsApp con el pedido
+                    window.open(window.cart.getWhatsAppLink(WHATSAPP_NUMBER, customerInfo), '_blank');
+                } else {
+                    // Para otros métodos, mostrar confirmación
+                    alert('¡Gracias por tu pedido!\n\nRecibirás un email con los detalles para completar el pago por ' +
+                          (paymentMethod === 'bizum' ? 'Bizum' : 'Transferencia Bancaria') + '.\n\n' +
+                          'Si tienes dudas, contáctanos por WhatsApp.');
+
+                    // Aquí iría la integración con Supabase o backend para guardar el pedido
+                    console.log('Pedido:', {
+                        customer: customerInfo,
+                        items: window.cart.items,
+                        subtotal: window.cart.getSubtotal(),
+                        shipping: window.cart.getShipping(SHIPPING_CONFIG),
+                        total: window.cart.getTotal(SHIPPING_CONFIG),
+                        paymentMethod: paymentMethod,
+                        notes: data.notas
+                    });
+                }
+
+                // Vaciar carrito después del pedido
+                // window.cart.clear();
+                // window.location.href = 'gracias.html';
+            });
+        });
+    </script>
+</body>
+</html>
