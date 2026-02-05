@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¡Gracias por tu pedido! | Cuchitas</title>
+    <meta name="description" content="Tu pedido ha sido recibido. Gracias por confiar en Cuchitas.">
+
+    <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- Header simplificado -->
+    <header>
+        <div class="header-container">
+            <a href="/" class="logo">
+                <img src="images/logo-cuchitas.svg" alt="Cuchitas" width="180" height="45">
+            </a>
+        </div>
+    </header>
+
+    <!-- Contenido de Gracias -->
+    <main style="min-height: 60vh; display: flex; align-items: center; justify-content: center; padding: 40px 20px;">
+        <div style="text-align: center; max-width: 600px;">
+            <div style="font-size: 80px; margin-bottom: 20px;">🎉</div>
+            <h1 style="color: var(--verde-oscuro); margin-bottom: 20px;">¡Gracias por tu pedido!</h1>
+
+            <div id="order-details" style="background: var(--gris-claro); padding: 30px; border-radius: 12px; margin-bottom: 30px; text-align: left;">
+                <p style="margin-bottom: 15px;"><strong>Número de pedido:</strong> <span id="order-number">-</span></p>
+                <p style="margin-bottom: 15px;"><strong>Total:</strong> <span id="order-total">-</span></p>
+                <p style="margin-bottom: 0;"><strong>Método de pago:</strong> <span id="payment-method">-</span></p>
+            </div>
+
+            <div id="payment-instructions" style="background: #e8f5e9; padding: 25px; border-radius: 12px; margin-bottom: 30px; border-left: 4px solid var(--verde-oscuro);">
+                <!-- Instrucciones según método de pago -->
+            </div>
+
+            <p style="color: #666; margin-bottom: 30px;">
+                Hemos enviado un email de confirmación a <strong id="customer-email">tu correo</strong>.<br>
+                Si tienes alguna duda, no dudes en contactarnos.
+            </p>
+
+            <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+                <a href="https://wa.me/34652600700" class="btn-primary" target="_blank" rel="noopener">
+                    💬 Contactar por WhatsApp
+                </a>
+                <a href="tienda.html" class="btn-secondary">
+                    Seguir comprando
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer simplificado -->
+    <footer style="margin-top: 60px;">
+        <div class="footer-bottom" style="border: none; padding: 30px;">
+            © 2026 Cuchitas · Saben a México
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Obtener datos del pedido desde sessionStorage
+            const orderData = JSON.parse(sessionStorage.getItem('cuchitas_last_order') || '{}');
+
+            if (orderData.id) {
+                // Mostrar número de pedido (primeros 8 caracteres del UUID)
+                document.getElementById('order-number').textContent = '#' + orderData.id.substring(0, 8).toUpperCase();
+                document.getElementById('order-total').textContent = orderData.total.toFixed(2) + '€';
+                document.getElementById('customer-email').textContent = orderData.email;
+
+                // Mostrar instrucciones según método de pago
+                const instructionsEl = document.getElementById('payment-instructions');
+                const paymentMethodEl = document.getElementById('payment-method');
+
+                switch(orderData.paymentMethod) {
+                    case 'transferencia':
+                        paymentMethodEl.textContent = 'Transferencia Bancaria';
+                        instructionsEl.innerHTML = `
+                            <h3 style="margin-bottom: 15px; color: var(--verde-oscuro);">📋 Instrucciones de pago</h3>
+                            <p style="margin-bottom: 10px;">Realiza la transferencia a:</p>
+                            <p style="margin-bottom: 5px;"><strong>Banco:</strong> BBVA</p>
+                            <p style="margin-bottom: 5px;"><strong>IBAN:</strong> ES00 0000 0000 0000 0000 0000</p>
+                            <p style="margin-bottom: 5px;"><strong>Beneficiario:</strong> Cuchitas S.L.</p>
+                            <p style="margin-bottom: 15px;"><strong>Concepto:</strong> Pedido ${orderData.id.substring(0, 8).toUpperCase()}</p>
+                            <p style="font-size: 14px; color: #666;">Una vez recibido el pago, prepararemos tu pedido.</p>
+                        `;
+                        break;
+                    case 'bizum':
+                        paymentMethodEl.textContent = 'Bizum';
+                        instructionsEl.innerHTML = `
+                            <h3 style="margin-bottom: 15px; color: var(--verde-oscuro);">📱 Instrucciones de pago</h3>
+                            <p style="margin-bottom: 10px;">Envía el Bizum a:</p>
+                            <p style="margin-bottom: 5px;"><strong>Teléfono:</strong> 652 600 700</p>
+                            <p style="margin-bottom: 15px;"><strong>Concepto:</strong> Pedido ${orderData.id.substring(0, 8).toUpperCase()}</p>
+                            <p style="font-size: 14px; color: #666;">Una vez recibido el pago, prepararemos tu pedido.</p>
+                        `;
+                        break;
+                    case 'whatsapp':
+                        paymentMethodEl.textContent = 'Coordinación por WhatsApp';
+                        instructionsEl.innerHTML = `
+                            <h3 style="margin-bottom: 15px; color: var(--verde-oscuro);">💬 Próximos pasos</h3>
+                            <p style="margin-bottom: 15px;">Te contactaremos por WhatsApp para coordinar el pago y envío de tu pedido.</p>
+                            <p style="font-size: 14px; color: #666;">Si prefieres, puedes escribirnos directamente al <strong>652 600 700</strong>.</p>
+                        `;
+                        break;
+                }
+
+                // Limpiar datos del pedido
+                sessionStorage.removeItem('cuchitas_last_order');
+
+            } else {
+                // No hay datos de pedido, redirigir a inicio
+                window.location.href = 'index.html';
+            }
+        });
+    </script>
+</body>
+</html>

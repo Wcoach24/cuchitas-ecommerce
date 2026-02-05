@@ -209,8 +209,14 @@
     </footer>
 
     <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="js/cart.js"></script>
     <script>
+        // Configuración Supabase
+        const SUPABASE_URL = 'https://bcicjjkgjgajxbrwmeyf.supabase.co';
+        const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJjaWNqamtnamdhanhicndtZXlmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjkxODU3ODIsImV4cCI6MjA4NDc2MTc4Mn0.BqgzIMTWvDIzbx1lofd7ZHYWt3FWjdpWc89kBaQGvrs';
+        const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
         const SHIPPING_CONFIG = {
             freeThreshold: 20,
             standardPrice: 4.90
@@ -249,42 +255,87 @@
             document.getElementById('checkout-form').addEventListener('submit', async (e) => {
                 e.preventDefault();
 
-                const formData = new FormData(e.target);
-                const data = Object.fromEntries(formData);
-                const paymentMethod = formData.get('pago');
+                const submitBtn = e.target.querySelector('button[type="submit"]');
+                submitBtn.disabled = true;
+                submitBtn.textContent = 'Procesando...';
 
-                // Datos del cliente
-                const customerInfo = {
-                    name: `${data.nombre} ${data.apellidos}`,
-                    phone: data.telefono,
-                    email: data.email,
-                    address: `${data.direccion}, ${data.cp} ${data.ciudad}, ${data.provincia}`
-                };
+                try {
+                    const formData = new FormData(e.target);
+                    const data = Object.fromEntries(formData);
+                    const paymentMethod = formData.get('pago');
 
-                if (paymentMethod === 'whatsapp') {
-                    // Abrir WhatsApp con el pedido
-                    window.open(window.cart.getWhatsAppLink(WHATSAPP_NUMBER, customerInfo), '_blank');
-                } else {
-                    // Para otros métodos, mostrar confirmación
-                    alert('¡Gracias por tu pedido!\n\nRecibirás un email con los detalles para completar el pago por ' +
-                          (paymentMethod === 'bizum' ? 'Bizum' : 'Transferencia Bancaria') + '.\n\n' +
-                          'Si tienes dudas, contáctanos por WhatsApp.');
+                    const subtotal = window.cart.getSubtotal();
+                    const shipping = window.cart.getShipping(SHIPPING_CONFIG);
+                    const total = subtotal + shipping;
 
-                    // Aquí iría la integración con Supabase o backend para guardar el pedido
-                    console.log('Pedido:', {
-                        customer: customerInfo,
-                        items: window.cart.items,
-                        subtotal: window.cart.getSubtotal(),
-                        shipping: window.cart.getShipping(SHIPPING_CONFIG),
-                        total: window.cart.getTotal(SHIPPING_CONFIG),
-                        paymentMethod: paymentMethod,
-                        notes: data.notas
-                    });
+                    // 1. Crear pedido en Supabase
+                    const { data: order, error: orderError } = await supabase
+                        .from('cuchitas_orders')
+                        .insert({
+                            customer_name: `${data.nombre} ${data.apellidos}`,
+                            customer_email: data.email,
+                            customer_phone: data.telefono,
+                            shipping_address: data.direccion,
+                            shipping_city: data.ciudad,
+                            shipping_postal_code: data.cp,
+                            shipping_province: data.provincia,
+                            subtotal: subtotal,
+                            shipping_cost: shipping,
+                            total: total,
+                            payment_method: paymentMethod,
+                            notes: data.notas || null
+                        })
+                        .select()
+                        .single();
+
+                    if (orderError) throw orderError;
+
+                    // 2. Insertar items del pedido
+                    const orderItems = window.cart.items.map(item => ({
+                        order_id: order.id,
+                        product_id: item.id,
+                        product_name: item.name,
+                        product_image: item.image,
+                        quantity: item.quantity,
+                        unit_price: item.price,
+                        total_price: item.price * item.quantity
+                    }));
+
+                    const { error: itemsError } = await supabase
+                        .from('cuchitas_order_items')
+                        .insert(orderItems);
+
+                    if (itemsError) throw itemsError;
+
+                    // 3. Guardar datos para página de gracias
+                    sessionStorage.setItem('cuchitas_last_order', JSON.stringify({
+                        id: order.id,
+                        total: total,
+                        email: data.email,
+                        paymentMethod: paymentMethod
+                    }));
+
+                    // 4. Si es WhatsApp, abrir también el chat
+                    if (paymentMethod === 'whatsapp') {
+                        const customerInfo = {
+                            name: `${data.nombre} ${data.apellidos}`,
+                            phone: data.telefono,
+                            email: data.email,
+                            address: `${data.direccion}, ${data.cp} ${data.ciudad}, ${data.provincia}`
+                        };
+                        window.open(window.cart.getWhatsAppLink(WHATSAPP_NUMBER, customerInfo), '_blank');
+                    }
+
+                    // 5. Vaciar carrito y redirigir
+                    window.cart.clear();
+                    window.location.href = 'gracias.html';
+
+                } catch (error) {
+                    console.error('Error al procesar pedido:', error);
+                    alert('Hubo un error al procesar tu pedido. Por favor, inténtalo de nuevo o contáctanos por WhatsApp.');
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = 'Confirmar Pedido →';
                 }
-
-                // Vaciar carrito después del pedido
-                // window.cart.clear();
-                // window.location.href = 'gracias.html';
             });
         });
     </script>
