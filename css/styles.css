@@ -92,7 +92,6 @@ header {
     position: sticky;
     top: 0;
     z-index: 1000;
-    /* Mejora para sticky más robusto */
     width: 100%;
     left: 0;
     right: 0;
@@ -169,7 +168,7 @@ nav a:hover {
 
 .cart-btn:hover {
     background: var(--amarillo);
-    color: var(--negro); /* FIX: Texto negro para mejor contraste sobre amarillo */
+    color: var(--negro);
 }
 
 .cart-count {
@@ -201,7 +200,7 @@ nav a:hover {
     position: relative;
     padding: 60px 20px 100px;
     overflow: hidden;
-    background: var(--negro); /* Fallback */
+    background: var(--negro);
 }
 
 .hero-video {
@@ -449,11 +448,32 @@ section {
     z-index: 1;
 }
 
-.producto-imagen {
+/* Contenedor de imagen de producto - FIX para imágenes cortadas */
+.producto-imagen-container {
     width: 100%;
     height: 220px;
-    object-fit: cover;
-    background: var(--gris-claro);
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.producto-imagen {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Cambiado de cover a contain para no cortar */
+    padding: 15px;
+    background: transparent;
+}
+
+/* Fallback para estructura antigua sin contenedor */
+.producto-card > .producto-imagen {
+    width: 100%;
+    height: 220px;
+    object-fit: contain;
+    padding: 15px;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
 }
 
 .producto-badges {
@@ -628,8 +648,10 @@ section {
 .cart-item-image {
     width: 100px;
     height: 80px;
-    object-fit: cover;
+    object-fit: contain;
     border-radius: var(--radius-sm);
+    background: var(--gris-claro);
+    padding: 5px;
 }
 
 .cart-item-info h3 {
@@ -1114,6 +1136,12 @@ footer {
     .cta-final h2 {
         font-size: 28px;
     }
+
+    /* Productos en móvil - imágenes más pequeñas */
+    .producto-imagen-container,
+    .producto-card > .producto-imagen {
+        height: 180px;
+    }
 }
 
 @media (max-width: 480px) {
@@ -1141,5 +1169,11 @@ footer {
 
     .testimonios-grid {
         grid-template-columns: 1fr;
+    }
+
+    /* Productos en móvil pequeño */
+    .producto-imagen-container,
+    .producto-card > .producto-imagen {
+        height: 200px;
     }
 }
