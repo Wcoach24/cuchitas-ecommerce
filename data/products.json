@@ -1,0 +1,121 @@
+{
+  "products": [
+    {
+      "id": "pack-ahorro-6",
+      "name": "Pack Ahorro 6 Paquetes",
+      "slug": "pack-ahorro-6-paquetes",
+      "description": "6 paquetes de 22 piezas (3kg total). Ideal para familias.",
+      "longDescription": "Nuestro pack más popular. Incluye 6 paquetes de tortillas de maíz nixtamalizado de 22 piezas cada uno. Total aproximado: 3kg de auténticas tortillas mexicanas. Perfectas para congelar y tener siempre a mano.",
+      "price": 29.90,
+      "originalPrice": 35.40,
+      "discount": 15,
+      "image": "images/pack-ahorro.webp",
+      "category": "packs",
+      "badges": ["vegano", "sin-gluten", "artesanal"],
+      "stock": 50,
+      "featured": true,
+      "specs": {
+        "piezas": "132 (6x22)",
+        "peso": "3kg aprox",
+        "tamaño": "12cm"
+      }
+    },
+    {
+      "id": "tortillas-12cm-22",
+      "name": "Tortillas 12cm - 22 pzs",
+      "slug": "tortillas-12cm-22-piezas",
+      "description": "Tamaño ideal para tacos. Paquete de 500gr aprox.",
+      "longDescription": "Nuestras tortillas de 12cm son el tamaño perfecto para tacos tradicionales. Hechas con maíz nixtamalizado de primera calidad, siguiendo la receta tradicional mexicana. Se mantienen flexibles y no se rompen.",
+      "price": 5.90,
+      "originalPrice": null,
+      "discount": 0,
+      "image": "images/tortillas-producto.webp",
+      "category": "tortillas",
+      "badges": ["vegano", "sin-gluten"],
+      "stock": 100,
+      "featured": true,
+      "specs": {
+        "piezas": "22",
+        "peso": "500gr aprox",
+        "tamaño": "12cm"
+      }
+    },
+    {
+      "id": "tortillas-10cm-15",
+      "name": "Tortillas 10cm - 15 pzs",
+      "slug": "tortillas-10cm-15-piezas",
+      "description": "Perfectas para tacos pequeños. Paquete de 270gr aprox.",
+      "longDescription": "Tortillas de tamaño más pequeño, ideales para tacos de aperitivo, taquitos dorados o para quienes prefieren porciones más pequeñas. Mismo sabor auténtico, formato más compacto.",
+      "price": 4.00,
+      "originalPrice": null,
+      "discount": 0,
+      "image": "images/tortillas-producto.webp",
+      "category": "tortillas",
+      "badges": ["vegano", "sin-gluten"],
+      "stock": 80,
+      "featured": false,
+      "specs": {
+        "piezas": "15",
+        "peso": "270gr aprox",
+        "tamaño": "10cm"
+      }
+    },
+    {
+      "id": "tortillas-12cm-10",
+      "name": "Tortillas 12cm - 10 pzs",
+      "slug": "tortillas-12cm-10-piezas",
+      "description": "Paquete pequeño para probar. 230gr aprox.",
+      "longDescription": "Paquete ideal para quien quiere probar nuestras tortillas por primera vez o para hogares pequeños. 10 tortillas de 12cm, perfectas para una cena de tacos para 2 personas.",
+      "price": 3.00,
+      "originalPrice": null,
+      "discount": 0,
+      "image": "images/tortillas-producto.webp",
+      "category": "tortillas",
+      "badges": ["vegano", "sin-gluten"],
+      "stock": 120,
+      "featured": false,
+      "specs": {
+        "piezas": "10",
+        "peso": "230gr aprox",
+        "tamaño": "12cm"
+      }
+    },
+    {
+      "id": "chilitos-escabeche",
+      "name": "Chilitos en Escabeche",
+      "slug": "chilitos-escabeche",
+      "description": "El complemento perfecto. Bolsitas de 120gr.",
+      "longDescription": "Chiles jalapeños en escabeche, el acompañamiento tradicional para tus tacos. Preparados artesanalmente con la receta tradicional mexicana. Picante moderado, sabor intenso.",
+      "price": 1.50,
+      "originalPrice": null,
+      "discount": 0,
+      "image": "images/chilitos.webp",
+      "category": "complementos",
+      "badges": ["artesanal"],
+      "stock": 200,
+      "featured": false,
+      "specs": {
+        "peso": "120gr",
+        "picante": "Moderado"
+      }
+    }
+  ],
+  "categories": [
+    {"id": "all", "name": "Todos", "icon": "🌮"},
+    {"id": "tortillas", "name": "Tortillas", "icon": "🧀"},
+    {"id": "packs", "name": "Packs Ahorro", "icon": "📦"},
+    {"id": "complementos", "name": "Complementos", "icon": "🌶️"}
+  ],
+  "badges": {
+    "vegano": {"label": "Vegano", "color": "#e8f5e9", "textColor": "#2e7d32", "icon": "🌱"},
+    "sin-gluten": {"label": "Sin Gluten", "color": "#fff3e0", "textColor": "#e65100", "icon": "🌾"},
+    "artesanal": {"label": "Artesanal", "color": "#e3f2fd", "textColor": "#1565c0", "icon": "👨‍🍳"}
+  },
+  "shipping": {
+    "freeThreshold": 20,
+    "standardPrice": 4.90,
+    "expressPrice": 7.90,
+    "standardDays": "24-48h",
+    "expressDays": "24h"
+  }
+}
