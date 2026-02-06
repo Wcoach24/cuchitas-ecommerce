@@ -226,8 +226,11 @@ nav a:hover {
     align-items: center;
 }
 
+/* Hero Logo - respeta tamaño del HTML */
 .hero-logo {
-    margin-bottom: 20px;
+    width: auto !important;
+    max-width: none !important;
+    margin: 0 auto 20px;
     border-radius: 50%;
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
     animation: float 3s ease-in-out infinite;
@@ -292,7 +295,7 @@ nav a:hover {
     text-align: center;
 }
 
-.hero-image img {
+.hero-image img:not(.hero-logo) {
     width: 100%;
     max-width: 450px;
     border-radius: var(--radius-lg);
@@ -300,16 +303,14 @@ nav a:hover {
 }
 
 .hero-badges-row {
-    position: absolute;
-    bottom: -25px;
-    left: 50%;
-    transform: translateX(-50%);
     display: flex;
     gap: 10px;
+    justify-content: center;
     background: white;
     padding: 15px 25px;
     border-radius: var(--radius-full);
     box-shadow: var(--shadow-md);
+    margin-top: 20px;
 }
 
 .badge-item {
