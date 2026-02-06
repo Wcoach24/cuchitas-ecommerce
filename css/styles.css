@@ -195,6 +195,7 @@ nav a:hover {
     background: var(--verde-oscuro);
 }
 
+/* Hero Video - hide all controls */
 .hero-video {
     position: absolute;
     top: 0;
@@ -203,6 +204,36 @@ nav a:hover {
     height: 100%;
     object-fit: cover;
     z-index: 0;
+    pointer-events: none;
+}
+
+/* Hide video controls across all browsers */
+.hero-video::-webkit-media-controls {
+    display: none !important;
+}
+
+.hero-video::-webkit-media-controls-panel {
+    display: none !important;
+}
+
+.hero-video::-webkit-media-controls-play-button {
+    display: none !important;
+}
+
+.hero-video::-webkit-media-controls-start-playback-button {
+    display: none !important;
+}
+
+.hero-video::-webkit-media-controls-overlay-play-button {
+    display: none !important;
+}
+
+.hero-video::-moz-media-controls {
+    display: none !important;
+}
+
+.hero-video::--webkit-media-controls-enclosure {
+    display: none !important;
 }
 
 .hero-overlay {
