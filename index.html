@@ -6,6 +6,9 @@
     <title>Tortillas de Maíz Auténticas | Cuchitas - Sabor Mexicano a Domicilio en España</title>
     <meta name="description" content="Tortillas de maíz nixtamalizado hechas a mano en España. 100% artesanales, veganas y sin gluten. Envío gratuito en pedidos superiores a 20€.">
 
+    <!-- Preload hero video for faster loading -->
+    <link rel="preload" as="video" href="images/hero-background.mp4" type="video/mp4">
+
     <!-- Open Graph -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://cuchitas.com/">
@@ -65,8 +68,15 @@
 
     <!-- Hero -->
     <section class="hero">
-        <!-- Video Background -->
-        <video class="hero-video" autoplay muted loop playsinline>
+        <!-- Video Background - optimized -->
+        <video class="hero-video" 
+               autoplay 
+               muted 
+               loop 
+               playsinline
+               preload="auto"
+               disablePictureInPicture
+               poster="images/hero-poster.jpg">
             <source src="images/hero-background.mp4" type="video/mp4">
         </video>
         <div class="hero-overlay"></div>
